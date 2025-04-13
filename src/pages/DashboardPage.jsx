@@ -1,8 +1,11 @@
 import Navbar from "../components/Navbar";
 import Breadcrumb from "../components/Breadcrumb";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function DashboardPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
@@ -11,11 +14,11 @@ export default function DashboardPage() {
         {/* Hero Section */}
         <div className="bg-gradient-to-r from-indigo-600 to-violet-600 text-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-            <Breadcrumb items={[{ label: "Dashboard" }]} />
+            <Breadcrumb items={[{ label: t("dashboard.title") }]} />
             
-            <h1 className="text-3xl sm:text-4xl font-bold mt-4 mb-2">Welcome to your Dashboard</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold mt-4 mb-2">{t("dashboard.title")}</h1>
             <p className="text-indigo-100 text-lg max-w-2xl">
-              Access your health tools, appointments, and medical chat history anytime.
+              {t("dashboard.subtitle")}
             </p>
           </div>
         </div>
@@ -33,9 +36,9 @@ export default function DashboardPage() {
                   </svg>
                 </div>
               }
-              title="Appointments"
-              description="View or create your medical chat sessions."
-              actionText="Go to Appointments"
+              title={t("dashboard.appointments.title")}
+              description={t("dashboard.appointments.description")}
+              actionText={t("dashboard.appointments.action")}
             />
             
             {/* Profile Card */}
@@ -48,9 +51,9 @@ export default function DashboardPage() {
                   </svg>
                 </div>
               }
-              title="Your Profile"
-              description="Manage your health info, history, and preferences."
-              actionText="View Profile"
+              title={t("dashboard.profile.title")}
+              description={t("dashboard.profile.description")}
+              actionText={t("dashboard.profile.action")}
             />
             
             {/* New Appointment Card */}
@@ -64,16 +67,16 @@ export default function DashboardPage() {
                   </svg>
                 </div>
               }
-              title="Start New Appointment"
-              description="Create a new AI consultation appointment with Dr. Copad."
-              actionText="Start Now"
+              title={t("dashboard.newAppointment.title")}
+              description={t("dashboard.newAppointment.description")}
+              actionText={t("dashboard.newAppointment.action")}
             />
           </div>
           
           {/* Stats/Quick Info Section */}
           <div className="mt-12 bg-white rounded-xl shadow-sm overflow-hidden">
             <div className="p-6 border-b border-gray-100">
-              <h2 className="text-lg font-semibold text-gray-800">Your Health Summary</h2>
+              <h2 className="text-lg font-semibold text-gray-800">{t("dashboard.healthSummary.title")}</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100">
               <div className="p-6">
@@ -84,7 +87,7 @@ export default function DashboardPage() {
                     </svg>
                   </div>
                   <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-500">Recent Consultations</div>
+                    <div className="text-sm font-medium text-gray-500">{t("dashboard.healthSummary.recentConsultations")}</div>
                     <div className="mt-1 text-xl font-semibold text-indigo-600">3</div>
                   </div>
                 </div>
@@ -97,7 +100,7 @@ export default function DashboardPage() {
                     </svg>
                   </div>
                   <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-500">Profile Completion</div>
+                    <div className="text-sm font-medium text-gray-500">{t("dashboard.healthSummary.profileCompletion")}</div>
                     <div className="mt-1 text-xl font-semibold text-green-600">85%</div>
                   </div>
                 </div>
@@ -110,7 +113,7 @@ export default function DashboardPage() {
                     </svg>
                   </div>
                   <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-500">Next Appointment</div>
+                    <div className="text-sm font-medium text-gray-500">{t("dashboard.healthSummary.nextAppointment")}</div>
                     <div className="mt-1 text-lg font-semibold text-purple-600">In 2 days</div>
                   </div>
                 </div>
@@ -130,12 +133,12 @@ export default function DashboardPage() {
                   </svg>
                 </div>
                 <div className="ml-4">
-                  <h3 className="text-sm font-medium text-indigo-900">Your data is secure</h3>
-                  <p className="text-sm text-indigo-700">Encrypted, confidential, and protected</p>
+                  <h3 className="text-sm font-medium text-indigo-900">{t("dashboard.security.title")}</h3>
+                  <p className="text-sm text-indigo-700">{t("dashboard.security.description")}</p>
                 </div>
               </div>
               <Link to="/privacy" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                Learn more about our privacy policy →
+                {t("dashboard.security.learnMore")}
               </Link>
             </div>
           </div>
@@ -145,7 +148,7 @@ export default function DashboardPage() {
         <footer className="bg-white border-t border-gray-100">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="text-center text-xs text-gray-500">
-              Your health is our priority. This app is built for peace of mind.
+              {t("dashboard.footer")}
             </div>
           </div>
         </footer>
@@ -156,6 +159,8 @@ export default function DashboardPage() {
 
 // Feature Card Component
 function FeatureCard({ to, icon, title, description, actionText, highlighted = false }) {
+  const { t } = useTranslation();
+
   return (
     <Link
       to={to}
@@ -165,7 +170,7 @@ function FeatureCard({ to, icon, title, description, actionText, highlighted = f
     >
       {highlighted && (
         <div className="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-          Recommended
+          {t("dashboard.newAppointment.recommended")}
         </div>
       )}
       <div className="p-6 flex-grow">

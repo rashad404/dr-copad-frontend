@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { Bars3Icon, XMarkIcon, HomeIcon, CalendarIcon, UserIcon } from "@heroicons/react/24/outline";
 import { AuthContext } from "../context/AuthContext.jsx"; // 👈 import context
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -43,6 +44,9 @@ export default function Navbar() {
                 <NavLink to="/" label="Dashboard" icon={<HomeIcon className="w-4 h-4" />} />
                 <NavLink to="/appointments" label="Appointments" icon={<CalendarIcon className="w-4 h-4" />} />
                 <NavLink to="/profile" label="Profile" icon={<UserIcon className="w-4 h-4" />} />
+                <div className="ml-4">
+                  <LanguageSwitcher />
+                </div>
                 <button 
                   onClick={handleLogout}
                   className="ml-4 px-4 py-2 text-sm font-medium text-red-600 bg-red-50 rounded-md hover:bg-red-100 transition-colors"
@@ -52,6 +56,9 @@ export default function Navbar() {
               </>
             ) : (
               <>
+                <div className="mr-4">
+                  <LanguageSwitcher />
+                </div>
                 <Link to="/login" className="ml-4 px-4 py-2 text-sm font-medium text-indigo-600 bg-indigo-50 rounded-md hover:bg-indigo-100 transition-colors">
                   Login
                 </Link>
@@ -81,6 +88,9 @@ export default function Navbar() {
                 <MobileNavLink to="/" label="Dashboard" icon={<HomeIcon className="w-5 h-5" />} onClick={toggleMenu} />
                 <MobileNavLink to="/appointments" label="Appointments" icon={<CalendarIcon className="w-5 h-5" />} onClick={toggleMenu} />
                 <MobileNavLink to="/profile" label="Profile" icon={<UserIcon className="w-5 h-5" />} onClick={toggleMenu} />
+                <div className="px-3 py-2">
+                  <LanguageSwitcher />
+                </div>
                 <button 
                   onClick={() => { handleLogout(); toggleMenu(); }} 
                   className="w-full flex items-center px-3 py-2 text-base font-medium text-red-600 hover:bg-red-50 rounded-md"
@@ -93,6 +103,9 @@ export default function Navbar() {
               </>
             ) : (
               <>
+                <div className="px-3 py-2">
+                  <LanguageSwitcher />
+                </div>
                 <Link to="/login" className="block px-3 py-2 text-base font-medium text-indigo-600 hover:bg-indigo-50 rounded-md" onClick={toggleMenu}>
                   Login
                 </Link>

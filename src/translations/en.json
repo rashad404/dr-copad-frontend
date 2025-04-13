@@ -1,0 +1,110 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "login": "Login",
+    "logout": "Logout",
+    "settings": "Settings",
+    "language": "Language"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "errors": {
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email address"
+  },
+  "dashboard": {
+    "title": "Welcome to your Dashboard",
+    "subtitle": "Access your health tools, appointments, and medical chat history anytime.",
+    "appointments": {
+      "title": "Appointments",
+      "description": "View or create your medical chat sessions.",
+      "action": "Go to Appointments"
+    },
+    "profile": {
+      "title": "Your Profile",
+      "description": "Manage your health info, history, and preferences.",
+      "action": "View Profile"
+    },
+    "newAppointment": {
+      "title": "Start New Appointment",
+      "description": "Create a new AI consultation appointment with Dr. Copad.",
+      "action": "Start Now",
+      "recommended": "Recommended"
+    },
+    "healthSummary": {
+      "title": "Your Health Summary",
+      "recentConsultations": "Recent Consultations",
+      "profileCompletion": "Profile Completion",
+      "nextAppointment": "Next Appointment"
+    },
+    "security": {
+      "title": "Your data is secure",
+      "description": "Encrypted, confidential, and protected",
+      "learnMore": "Learn more about our privacy policy →"
+    },
+    "footer": "Your health is our priority. This app is built for peace of mind."
+  },
+  "home": {
+    "hero": {
+      "title": "Get AI-Powered Medical Help",
+      "subtitle": "Anytime. Anywhere.",
+      "description": "Dr. Copad is your personal AI doctor. Instantly chat about symptoms, get medical guidance, and keep your health records organized — securely.",
+      "getStarted": "Get Started Free",
+      "login": "Login",
+      "usersCount": "Join over {{count}} users"
+    },
+    "features": {
+      "title": "Features",
+      "subtitle": "Everything you need for your health",
+      "description": "AI-powered medical assistance that's accessible, reliable, and designed for your needs.",
+      "chat": {
+        "title": "Chat with AI Doctor",
+        "description": "Describe your symptoms and get AI-generated guidance instantly — 24/7. No waiting rooms, no appointments needed."
+      },
+      "upload": {
+        "title": "Upload Medical Files",
+        "description": "Analyze lab results, images, and medical history with AI assistance. Get insights and explanations in plain language."
+      },
+      "track": {
+        "title": "Track Appointments",
+        "description": "Keep your health journey organized with history, summaries, and AI notes. Access your previous consultations anytime."
+      }
+    },
+    "testimonials": {
+      "title": "Trusted by users worldwide",
+      "testimonial1": {
+        "quote": "Dr. Copad helped me understand my lab results when I couldn't get an appointment with my doctor. It explained everything in simple terms.",
+        "author": "Sarah K.",
+        "role": "Patient"
+      },
+      "testimonial2": {
+        "quote": "As someone living in a rural area, having 24/7 access to medical guidance has been life-changing. It's like having a doctor in my pocket.",
+        "author": "Michael T.",
+        "role": "Patient"
+      },
+      "testimonial3": {
+        "quote": "The symptom checker is impressively accurate. It helped me identify a condition my regular doctor had missed for months.",
+        "author": "Jessica W.",
+        "role": "Healthcare Worker"
+      }
+    },
+    "cta": {
+      "title": "Ready to take control",
+      "subtitle": "of your health?",
+      "description": "Get started with Dr. Copad today and experience the future of healthcare. No subscription required.",
+      "getStarted": "Get Started Free",
+      "login": "Login"
+    },
+    "footer": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "contact": "Contact",
+      "security": "HIPAA-compliant. Private. Your data is yours."
+    }
+  }
+} 

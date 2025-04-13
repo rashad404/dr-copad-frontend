@@ -1,0 +1,110 @@
+{
+  "common": {
+    "welcome": "Xoş gəlmisiniz",
+    "login": "Daxil ol",
+    "logout": "Çıxış",
+    "settings": "Parametrlər",
+    "language": "Dil"
+  },
+  "auth": {
+    "email": "E-poçt",
+    "password": "Şifrə",
+    "forgotPassword": "Şifrəni unutmusunuz?",
+    "signIn": "Daxil ol",
+    "signUp": "Qeydiyyat"
+  },
+  "errors": {
+    "required": "Bu sahə mütləqdir",
+    "invalidEmail": "Zəhmət olmasa düzgün e-poçt ünvanı daxil edin"
+  },
+  "dashboard": {
+    "title": "İdarə panelinizə xoş gəlmisiniz",
+    "subtitle": "Sağlamlıq alətlərinizə, randevularınıza və tibbi söhbət tarixçənizə istənilən vaxt daxil ola bilərsiniz.",
+    "appointments": {
+      "title": "Randevular",
+      "description": "Tibbi söhbət sessiyalarınızı görüntüləyin və ya yaradın.",
+      "action": "Randevulara keç"
+    },
+    "profile": {
+      "title": "Profiliniz",
+      "description": "Sağlamlıq məlumatlarınızı, tarixçənizi və üstünlüklərinizi idarə edin.",
+      "action": "Profili görüntülə"
+    },
+    "newAppointment": {
+      "title": "Yeni randevu başlat",
+      "description": "Dr. Copad ilə yeni AI məsləhət randevusu yaradın.",
+      "action": "İndi başla",
+      "recommended": "Tövsiyə olunur"
+    },
+    "healthSummary": {
+      "title": "Sağlamlıq xülasəniz",
+      "recentConsultations": "Son məsləhətlər",
+      "profileCompletion": "Profil tamamlanması",
+      "nextAppointment": "Növbəti randevu"
+    },
+    "security": {
+      "title": "Məlumatlarınız təhlükəsizdir",
+      "description": "Şifrələnmiş, məxfi və qorunur",
+      "learnMore": "Məxfilik siyasətimiz haqqında ətraflı məlumat →"
+    },
+    "footer": "Sağlamlığınız bizim üçün önəmlidir. Bu tətbiq rahatlıq üçün yaradılıb."
+  },
+  "home": {
+    "hero": {
+      "title": "AI Dəstəkli Tibbi Kömək Alın",
+      "subtitle": "İstənilən vaxt. İstənilən yerdə.",
+      "description": "Dr. Copad sizin şəxsi AI həkiminizdir. Simptomlarınız haqqında dərhal söhbət edin, tibbi məsləhət alın və sağlamlıq qeydlərinizi təhlükəsiz şəkildə təşkil edin.",
+      "getStarted": "Pulsuz Başlayın",
+      "login": "Daxil ol",
+      "usersCount": "{{count}}+ istifadəçiyə qoşulun"
+    },
+    "features": {
+      "title": "Xüsusiyyətlər",
+      "subtitle": "Sağlamlığınız üçün lazım olan hər şey",
+      "description": "Əlçatan, etibarlı və ehtiyaclarınıza uyğun hazırlanmış AI dəstəkli tibbi yardım.",
+      "chat": {
+        "title": "AI Həkimlə Söhbət",
+        "description": "Simptomlarınızı təsvir edin və AI tərəfindən yaradılmış məsləhətləri dərhal alın — 24/7. Gözləmə otaqları və randevulara ehtiyac yoxdur."
+      },
+      "upload": {
+        "title": "Tibbi Faylları Yükləyin",
+        "description": "Laboratoriya nəticələrini, şəkilləri və tibbi tarixçəni AI köməyi ilə təhlil edin. Sadə dildə izahlar və analizlər əldə edin."
+      },
+      "track": {
+        "title": "Randevuları İzləyin",
+        "description": "Sağlamlıq səyahətinizi tarixçə, xülasələr və AI qeydləri ilə təşkil edin. Əvvəlki məsləhətlərinizə istənilən vaxt daxil ola bilərsiniz."
+      }
+    },
+    "testimonials": {
+      "title": "Dünya miqyasında istifadəçilər tərəfindən etibar edilir",
+      "testimonial1": {
+        "quote": "Dr. Copad həkimimlə randevu ala bilmədiyim zaman laboratoriya nəticələrimi başa düşməyimə kömək etdi. Hər şeyi sadə dildə izah etdi.",
+        "author": "Sarah K.",
+        "role": "Xəstə"
+      },
+      "testimonial2": {
+        "quote": "Kənd ərazisində yaşayan biri kimi, 24/7 tibbi məsləhətə çıxış həyatımı dəyişdi. Sanki həkim cibimdədir.",
+        "author": "Michael T.",
+        "role": "Xəstə"
+      },
+      "testimonial3": {
+        "quote": "Simptom yoxlayıcı təəccüblü dərəcədə dəqiqdir. Adi həkimimin aylarla qaçırdığı bir vəziyyəti müəyyən etməyimə kömək etdi.",
+        "author": "Jessica W.",
+        "role": "Səhiyyə İşçisi"
+      }
+    },
+    "cta": {
+      "title": "Sağlamlığınızın",
+      "subtitle": "nəzarətini ələ almağa hazırsınız?",
+      "description": "Dr. Copad ilə bu gün başlayın və səhiyyənin gələcəyini yaşayın. Abunə tələb olunmur.",
+      "getStarted": "Pulsuz Başlayın",
+      "login": "Daxil ol"
+    },
+    "footer": {
+      "privacy": "Məxfilik Siyasəti",
+      "terms": "Xidmət Şərtləri",
+      "contact": "Əlaqə",
+      "security": "HIPAA uyğun. Məxfi. Məlumatlarınız sizindir."
+    }
+  }
+} 

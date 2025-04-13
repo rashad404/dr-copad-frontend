@@ -3,12 +3,14 @@ import { useState, useEffect, useContext } from "react";
 import { Bars3Icon, XMarkIcon, HomeIcon, CalendarIcon, UserIcon } from "@heroicons/react/24/outline";
 import { AuthContext } from "../context/AuthContext.jsx"; // 👈 import context
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext); // 👈 use context
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -41,9 +43,9 @@ export default function Navbar() {
           <nav className="hidden md:flex items-center space-x-1">
             {isAuthenticated ? (
               <>
-                <NavLink to="/" label="Dashboard" icon={<HomeIcon className="w-4 h-4" />} />
-                <NavLink to="/appointments" label="Appointments" icon={<CalendarIcon className="w-4 h-4" />} />
-                <NavLink to="/profile" label="Profile" icon={<UserIcon className="w-4 h-4" />} />
+                <NavLink to="/" label={t("navbar.dashboard")} icon={<HomeIcon className="w-4 h-4" />} />
+                <NavLink to="/appointments" label={t("navbar.appointments")} icon={<CalendarIcon className="w-4 h-4" />} />
+                <NavLink to="/profile" label={t("navbar.profile")} icon={<UserIcon className="w-4 h-4" />} />
                 <div className="ml-4">
                   <LanguageSwitcher />
                 </div>
@@ -51,7 +53,7 @@ export default function Navbar() {
                   onClick={handleLogout}
                   className="ml-4 px-4 py-2 text-sm font-medium text-red-600 bg-red-50 rounded-md hover:bg-red-100 transition-colors"
                 >
-                  Logout
+                  {t("navbar.logout")}
                 </button>
               </>
             ) : (
@@ -60,10 +62,10 @@ export default function Navbar() {
                   <LanguageSwitcher />
                 </div>
                 <Link to="/login" className="ml-4 px-4 py-2 text-sm font-medium text-indigo-600 bg-indigo-50 rounded-md hover:bg-indigo-100 transition-colors">
-                  Login
+                  {t("navbar.login")}
                 </Link>
                 <Link to="/register" className="ml-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition-colors">
-                  Register
+                  {t("navbar.register")}
                 </Link>
               </>
             )}
@@ -85,9 +87,9 @@ export default function Navbar() {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {isAuthenticated ? (
               <>
-                <MobileNavLink to="/" label="Dashboard" icon={<HomeIcon className="w-5 h-5" />} onClick={toggleMenu} />
-                <MobileNavLink to="/appointments" label="Appointments" icon={<CalendarIcon className="w-5 h-5" />} onClick={toggleMenu} />
-                <MobileNavLink to="/profile" label="Profile" icon={<UserIcon className="w-5 h-5" />} onClick={toggleMenu} />
+                <MobileNavLink to="/" label={t("navbar.dashboard")} icon={<HomeIcon className="w-5 h-5" />} onClick={toggleMenu} />
+                <MobileNavLink to="/appointments" label={t("navbar.appointments")} icon={<CalendarIcon className="w-5 h-5" />} onClick={toggleMenu} />
+                <MobileNavLink to="/profile" label={t("navbar.profile")} icon={<UserIcon className="w-5 h-5" />} onClick={toggleMenu} />
                 <div className="px-3 py-2">
                   <LanguageSwitcher />
                 </div>
@@ -98,7 +100,7 @@ export default function Navbar() {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                   </svg>
-                  Logout
+                  {t("navbar.logout")}
                 </button>
               </>
             ) : (
@@ -107,10 +109,10 @@ export default function Navbar() {
                   <LanguageSwitcher />
                 </div>
                 <Link to="/login" className="block px-3 py-2 text-base font-medium text-indigo-600 hover:bg-indigo-50 rounded-md" onClick={toggleMenu}>
-                  Login
+                  {t("navbar.login")}
                 </Link>
                 <Link to="/register" className="block px-3 py-2 mt-1 text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md" onClick={toggleMenu}>
-                  Register
+                  {t("navbar.register")}
                 </Link>
               </>
             )}

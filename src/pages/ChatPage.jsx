@@ -5,9 +5,12 @@ import Navbar from "../components/Navbar";
 import Breadcrumb from "../components/Breadcrumb";
 import userAvatar from "../assets/user.png";
 import doctorAvatar from "../assets/doctor.png";
+import { useTranslation } from 'react-i18next';
+import { PaperAirplaneIcon, PaperClipIcon } from '@heroicons/react/24/outline';
 
 export default function ChatPage() {
   const { id } = useParams();
+  const { t } = useTranslation();
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(true);
@@ -15,6 +18,7 @@ export default function ChatPage() {
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
   const chatContainerRef = useRef(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setLoading(true);
@@ -24,16 +28,15 @@ export default function ChatPage() {
         if (Array.isArray(res.data)) {
           setMessages(res.data);
         } else {
-          setMessages([]); // fallback to empty array
+          setMessages([]);
         }
       })
       .catch(err => {
         console.error("Failed to load chat history:", err);
-        setMessages([]); // ensure it's always an array
+        setMessages([]);
       })
       .finally(() => {
         setLoading(false);
-        // Focus the input after loading
         setTimeout(() => inputRef.current?.focus(), 100);
       });
   }, [id]);
@@ -46,30 +49,25 @@ export default function ChatPage() {
     e.preventDefault();
     if (!input.trim() || sending) return;
     
-    // Optimistically add user message
     const userMessage = { sender: "USER", message: input.trim() };
     setMessages(prev => [...prev, userMessage]);
     setInput("");
     
-    // Add typing indicator
     setSending(true);
     
     try {
       const res = await sendMessageToAI(id, { message: userMessage.message });
-      // Replace typing indicator with actual response
       setMessages(prev => {
-        // Extract only AI messages from the response
         const aiResponses = res.data.filter(msg => msg.sender === "AI");
         return [...prev, ...aiResponses];
       });
     } catch (error) {
       console.error("Failed to send message:", error);
-      // Show error message
       setMessages(prev => [
         ...prev, 
         { 
           sender: "AI", 
-          message: "Sorry, I couldn't process your message. Please try again." 
+          message: t('chat.error')
         }
       ]);
     } finally {
@@ -77,7 +75,6 @@ export default function ChatPage() {
     }
   };
 
-  // Format timestamp if available
   const formatTime = (timestamp) => {
     if (!timestamp) return "";
     try {
@@ -87,7 +84,6 @@ export default function ChatPage() {
     }
   };
 
-  // Group consecutive messages from the same sender
   const groupedMessages = messages.reduce((acc, message, i) => {
     if (i === 0 || messages[i - 1].sender !== message.sender) {
       return [...acc, [message]];
@@ -105,9 +101,9 @@ export default function ChatPage() {
         <div className="bg-white border-b border-gray-200 shadow-sm px-4 sm:px-6 py-4">
           <Breadcrumb
             items={[
-              { to: "/", label: "Home" },
-              { to: "/appointments", label: "Appointments" },
-              { label: "Chat with Dr. Copad" }
+              { to: "/", label: t('navbar.home') },
+              { to: "/appointments", label: t('navbar.appointments') },
+              { label: t('chat.title') }
             ]}
           />
           <div className="flex items-center justify-between mt-2">
@@ -121,9 +117,9 @@ export default function ChatPage() {
                 <span className="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full bg-green-400 ring-2 ring-white" />
               </div>
               <div className="ml-3">
-                <h1 className="text-lg font-semibold text-gray-900">Dr. Copad AI</h1>
+                <h1 className="text-lg font-semibold text-gray-900">{t('chat.title')}</h1>
                 <p className="text-xs text-gray-500">
-                  AI Medical Assistant • <span className="text-green-600">Online</span>
+                  {t('chat.subtitle')} • <span className="text-green-600">{t('chat.status.online')}</span>
                 </p>
               </div>
             </div>
@@ -163,9 +159,9 @@ export default function ChatPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-1">Start your conversation</h3>
+              <h3 className="text-lg font-medium text-gray-900 mb-1">{t('chat.empty.title')}</h3>
               <p className="text-gray-500 max-w-sm mx-auto">
-                Describe your symptoms or ask any health-related questions to get started.
+                {t('chat.empty.description')}
               </p>
             </div>
           ) : (
@@ -244,7 +240,7 @@ export default function ChatPage() {
             <input
               ref={inputRef}
               className="w-full border border-gray-300 py-3 pl-5 pr-16 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-600 placeholder-gray-400 shadow-sm"
-              placeholder="Type your message..."
+              placeholder={t('chat.input.placeholder')}
               value={input}
               onChange={e => setInput(e.target.value)}
               disabled={sending}
@@ -278,10 +274,10 @@ export default function ChatPage() {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
-              HIPAA-Private
+              {t('chat.security.hipaa')}
             </div>
             <button className="text-xs text-gray-400 hover:text-indigo-600 transition-colors">
-              Save Conversation
+              {t('chat.security.save')}
             </button>
           </div>
         </div>

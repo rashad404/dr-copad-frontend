@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { createAppointment } from "../api";
 import Navbar from "../components/Navbar";
 import Breadcrumb from "../components/Breadcrumb";
+import { useTranslation } from "react-i18next";
 
 const specialtyOptions = [
   { value: "General", label: "General Consultation" },
@@ -14,6 +15,7 @@ const specialtyOptions = [
 ];
 
 export default function NewAppointmentPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -67,17 +69,17 @@ export default function NewAppointmentPage() {
       <div className="max-w-3xl mx-auto px-4 py-8">
         <Breadcrumb 
           items={[
-            { to: "/appointments", label: "Appointments" },
-            { label: "New Appointment" }
+            { to: "/appointments", label: t("navbar.appointments") },
+            { label: t("appointments.newAppointment") }
           ]} 
         />
         
         <div className="bg-white rounded-xl shadow-sm overflow-hidden mt-6">
           {/* Header */}
           <div className="border-b border-gray-200 bg-indigo-50 px-6 py-4">
-            <h1 className="text-xl font-bold text-indigo-800">Start a New Appointment</h1>
+            <h1 className="text-xl font-bold text-indigo-800">{t("newAppointment.title")}</h1>
             <p className="text-sm text-indigo-600 mt-1">
-              Tell us what you need help with and we'll connect you with Dr. Copad
+              {t("newAppointment.subtitle")}
             </p>
           </div>
 
@@ -94,7 +96,7 @@ export default function NewAppointmentPage() {
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    What type of care do you need? <span className="text-red-500">*</span>
+                    {t("newAppointment.specialty.label")} <span className="text-red-500">*</span>
                   </label>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {specialtyOptions.map(option => (
@@ -111,7 +113,7 @@ export default function NewAppointmentPage() {
                           {option.value.charAt(0)}
                         </div>
                         <span className={`text-sm font-medium ${form.specialty === option.value ? 'text-indigo-700' : 'text-gray-700'}`}>
-                          {option.label}
+                          {t(`newAppointment.specialty.options.${option.value.toLowerCase()}`)}
                         </span>
                       </div>
                     ))}
@@ -120,14 +122,14 @@ export default function NewAppointmentPage() {
 
                 <div>
                   <label htmlFor="primaryConcern" className="block text-sm font-medium text-gray-700 mb-1">
-                    What's your main concern today? <span className="text-red-500">*</span>
+                    {t("newAppointment.primaryConcern.label")} <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     id="primaryConcern"
                     name="primaryConcern"
                     rows="3"
                     required
-                    placeholder="Briefly describe what's bothering you (e.g., headache, skin rash, anxiety)"
+                    placeholder={t("newAppointment.primaryConcern.placeholder")}
                     className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     value={form.primaryConcern}
                     onChange={handleChange}
@@ -144,7 +146,7 @@ export default function NewAppointmentPage() {
                         ? 'bg-indigo-600 text-white hover:bg-indigo-700' 
                         : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
                   >
-                    Continue
+                    {t("newAppointment.continue")}
                   </button>
                 </div>
               </div>
@@ -155,13 +157,13 @@ export default function NewAppointmentPage() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <div className="flex-1">
                     <label htmlFor="duration" className="block text-sm font-medium text-gray-700 mb-1">
-                      How long have you had this issue?
+                      {t("newAppointment.duration.label")}
                     </label>
                     <input
                       id="duration"
                       name="duration"
                       type="text"
-                      placeholder="e.g., 3 days, 2 weeks"
+                      placeholder={t("newAppointment.duration.placeholder")}
                       className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                       value={form.duration}
                       onChange={handleChange}
@@ -169,7 +171,7 @@ export default function NewAppointmentPage() {
                   </div>
                   <div className="flex-1">
                     <label htmlFor="severity" className="block text-sm font-medium text-gray-700 mb-1">
-                      How severe is it?
+                      {t("newAppointment.severity.label")}
                     </label>
                     <select
                       id="severity"
@@ -178,22 +180,22 @@ export default function NewAppointmentPage() {
                       value={form.severity}
                       onChange={handleChange}
                     >
-                      <option value="Mild">Mild - It's noticeable but doesn't affect daily activities</option>
-                      <option value="Moderate">Moderate - It affects some daily activities</option>
-                      <option value="Severe">Severe - It significantly affects daily activities</option>
+                      <option value="Mild">{t("newAppointment.severity.options.mild")}</option>
+                      <option value="Moderate">{t("newAppointment.severity.options.moderate")}</option>
+                      <option value="Severe">{t("newAppointment.severity.options.severe")}</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="symptoms" className="block text-sm font-medium text-gray-700 mb-1">
-                    Any other symptoms? (Optional)
+                    {t("newAppointment.symptoms.label")}
                   </label>
                   <textarea
                     id="symptoms"
                     name="symptoms"
                     rows="2"
-                    placeholder="List any other symptoms you're experiencing"
+                    placeholder={t("newAppointment.symptoms.placeholder")}
                     className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     value={form.symptoms}
                     onChange={handleChange}
@@ -202,13 +204,13 @@ export default function NewAppointmentPage() {
 
                 <div>
                   <label htmlFor="treatmentsTried" className="block text-sm font-medium text-gray-700 mb-1">
-                    Have you tried any treatments? (Optional)
+                    {t("newAppointment.treatments.label")}
                   </label>
                   <textarea
                     id="treatmentsTried"
                     name="treatmentsTried"
                     rows="2"
-                    placeholder="e.g., over-the-counter medications, home remedies"
+                    placeholder={t("newAppointment.treatments.placeholder")}
                     className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     value={form.treatmentsTried}
                     onChange={handleChange}
@@ -217,13 +219,13 @@ export default function NewAppointmentPage() {
 
                 <div>
                   <label htmlFor="notes" className="block text-sm font-medium text-gray-700 mb-1">
-                    Anything else Dr. Copad should know? (Optional)
+                    {t("newAppointment.notes.label")}
                   </label>
                   <textarea
                     id="notes"
                     name="notes"
                     rows="2"
-                    placeholder="e.g., allergies, existing conditions, current medications"
+                    placeholder={t("newAppointment.notes.placeholder")}
                     className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     value={form.notes}
                     onChange={handleChange}
@@ -236,7 +238,7 @@ export default function NewAppointmentPage() {
                     onClick={handleBack}
                     className="px-6 py-3 border border-gray-300 rounded-lg font-medium text-gray-700 hover:bg-gray-50"
                   >
-                    Back
+                    {t("newAppointment.back")}
                   </button>
                   <button
                     type="submit"
@@ -249,9 +251,9 @@ export default function NewAppointmentPage() {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                        Creating appointment...
+                        {t("newAppointment.submitting")}
                       </>
-                    ) : 'Start Appointment'}
+                    ) : t("newAppointment.submit")}
                   </button>
                 </div>
               </div>

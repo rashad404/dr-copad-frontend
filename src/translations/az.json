@@ -4,7 +4,8 @@
     "login": "Daxil ol",
     "logout": "Çıxış",
     "settings": "Tənzimləmələr",
-    "language": "Dil"
+    "language": "Dil",
+    "back_to_home": "Ana səhifəyə qayıt"
   },
   "navbar": {
     "home": "Ana səhifə",
@@ -17,10 +18,28 @@
   },
   "auth": {
     "email": "E-poçt",
+    "email_placeholder": "sizin@email.com",
     "password": "Şifrə",
-    "forgotPassword": "Şifrəni unutmusunuz?",
-    "signIn": "Daxil ol",
-    "signUp": "Qeydiyyat"
+    "password_placeholder": "••••••••",
+    "forgot_password": "Şifrəni unutmusunuz?",
+    "remember_me": "Məni xatırla",
+    "sign_up": "Qeydiyyat",
+    "login": {
+      "welcome": "Xoş gəlmisiniz",
+      "subtitle": "Hesabınıza daxil olmaq üçün davam edin",
+      "signing_in": "Daxil olunur...",
+      "no_account": "Hesabınız yoxdur?",
+      "create_account": "Hesab yaradın",
+      "secure_title": "Təhlükəsiz Tibbi Məsləhətlər",
+      "secure_description": "Sağlamlıq məlumatlarınız şifrələnib və təhlükəsiz şəkildə saxlanılır. Dr. Copad ilə istənilən vaxt tibbi məsləhət əldə edin.",
+      "access": "Giriş",
+      "secure": "Təhlükəsiz",
+      "powered": "AI ilə",
+      "sign_in": "Daxil ol"
+    },
+    "errors": {
+      "invalid_credentials": "Yanlış e-poçt və ya şifrə. Zəhmət olmasa yenidən cəhd edin."
+    }
   },
   "errors": {
     "required": "Bu sahə mütləqdir",

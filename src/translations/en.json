@@ -4,7 +4,8 @@
     "login": "Login",
     "logout": "Logout",
     "settings": "Settings",
-    "language": "Language"
+    "language": "Language",
+    "back_to_home": "Back to Home"
   },
   "navbar": {
     "home": "Home",
@@ -17,10 +18,28 @@
   },
   "auth": {
     "email": "Email",
+    "email_placeholder": "your@email.com",
     "password": "Password",
-    "forgotPassword": "Forgot Password?",
-    "signIn": "Sign In",
-    "signUp": "Sign Up"
+    "password_placeholder": "••••••••",
+    "forgot_password": "Forgot password?",
+    "remember_me": "Remember me",
+    "sign_up": "Sign Up",
+    "login": {
+      "welcome": "Welcome back",
+      "subtitle": "Sign in to your account to continue",
+      "signing_in": "Signing in...",
+      "no_account": "Don't have an account?",
+      "create_account": "Create an account",
+      "secure_title": "Secure Medical Consultations",
+      "secure_description": "Your health data is encrypted and securely stored. Access medical expertise anytime with Dr. Copad.",
+      "access": "Access",
+      "secure": "Secure",
+      "powered": "Powered",
+      "sign_in": "Sign In"
+    },
+    "errors": {
+      "invalid_credentials": "Invalid email or password. Please try again."
+    }
   },
   "errors": {
     "required": "This field is required",
